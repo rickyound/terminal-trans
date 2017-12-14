@@ -34,7 +34,7 @@ function displayresult()
         r_str=""
         for (( i=0;i<7;i++ ))
         do
-            random=$(( (RANDOM%1000) + 1 ))
+            random=$(( (RANDOM%`grep ".* ${TEXT} .*=" ${DIC_FILE} | wc -l`) + 1 ))
             export random
             s_str=`grep ".* ${TEXT} .*=" ${DIC_FILE} | awk -F" = " '{if(FNR==ENVIRON["random"]) print $1}'`
             if test "${r_str}" == ""
